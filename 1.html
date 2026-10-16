@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090c">
+  <meta name="description" content="A cinematic guide to the Marvel Cinematic Universe before Avengers: Doomsday. Explore the timeline, build your watchlist, and track your progress.">
+  <title>Road to Doomsday | MCU Watch Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #09090c;
+      --panel: #121217;
+      --panel2: #19191f;
+      --text: #f6f4f4;
+      --muted: #a8a4ad;
+      --red: #e62429;
+      --red2: #ff454a;
+      --line: #303039;
+      --gold: #f0c674;
+      --green: #75d6a0;
+      --display: "Barlow Condensed", Impact, sans-serif;
+      --body: "Inter", Arial, sans-serif;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0; color: var(--text); background: var(--bg); font-family: var(--body);
+      line-height: 1.65; overflow-x: hidden;
+    }
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -2; pointer-events: none;
+      background:
+        radial-gradient(ellipse at 85% 10%, rgba(230,36,41,.13), transparent 35%),
+        radial-gradient(ellipse at 5% 45%, rgba(130,20,28,.09), transparent 35%),
+        linear-gradient(180deg, #0b0b10 0%, #09090c 55%, #0e0b0e 100%);
+    }
+    a { color: #ff6b70; text-decoration: none; }
+    a:hover { color: white; }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin-inline: auto; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20; border-bottom: 1px solid rgba(255,255,255,.09);
+      background: rgba(9,9,12,.88); backdrop-filter: blur(16px);
+    }
+    .nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 10px; color: white; font-weight: 900; letter-spacing: .05em; }
+    .brand-mark { display: grid; place-items: center; width: 39px; height: 32px; background: var(--red); font-family: var(--display); font-size: 1.25rem; font-weight: 900; transform: skew(-8deg); }
+    .brand span:last-child { font-size: .78rem; line-height: 1.1; }
+    .brand small { display: block; color: #b9b5be; font-size: .58rem; letter-spacing: .2em; margin-top: 4px; }
+    .nav-links { display: flex; gap: 24px; align-items: center; font-size: .83rem; font-weight: 700; }
+    .nav-links a { color: #dedbe1; }
+    .nav-links a:hover { color: var(--red2); }
+    .menu-btn { display: none; color: white; background: none; border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; }
+    .hero {
+      position: relative; isolation: isolate; min-height: 610px; display: flex; align-items: center; overflow: hidden;
+      border-bottom: 1px solid #29232a;
+      background:
+        linear-gradient(90deg, rgba(8,8,12,.98) 0%, rgba(8,8,12,.9) 38%, rgba(8,8,12,.45) 75%, rgba(8,8,12,.8) 100%),
+        linear-gradient(0deg, #09090c 0%, transparent 38%),
+        url("https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?auto=format&fit=crop&w=2000&q=85") center 43% / cover;
+    }
+    .hero::after {
+      content: "DOOMSDAY"; position: absolute; z-index: -1; right: -1.5rem; bottom: -4rem;
+      font: 900 clamp(7rem, 20vw, 19rem)/.8 var(--display); letter-spacing: -.04em;
+      color: rgba(230,36,41,.12); white-space: nowrap; pointer-events: none;
+    }
+    .hero-content { padding-block: 90px 110px; max-width: 780px; }
+    .eyebrow { color: #ff6c70; font-size: .75rem; font-weight: 800; letter-spacing: .24em; text-transform: uppercase; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font: 900 clamp(3.6rem, 9vw, 7.8rem)/.86 var(--display); letter-spacing: -.02em; text-transform: uppercase; margin: 18px 0 25px; }
+    h1 span { display: block; color: var(--red); }
+    .hero-copy { color: #d0ccd3; font-size: clamp(1rem, 2vw, 1.18rem); max-width: 630px; }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 9px; border: 1px solid transparent; padding: 12px 18px; border-radius: 5px; font-weight: 800; font-size: .85rem; transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { color: white; background: var(--red); box-shadow: 0 8px 30px rgba(230,36,41,.18); }
+    .btn-primary:hover { color: white; background: #ff343a; }
+    .btn-secondary { border-color: #55515b; color: white; background: rgba(20,20,26,.65); }
+    .btn-secondary:hover { background: #222129; }
+    .section { padding-block: 76px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 28px; }
+    .section-head h2 { font: 800 clamp(2.2rem, 5vw, 3.6rem)/.95 var(--display); text-transform: uppercase; margin: 8px 0 0; }
+    .section-head p { color: var(--muted); max-width: 490px; margin: 0; font-size: .93rem; }
+    .red-rule { width: 48px; height: 4px; background: var(--red); margin-bottom: 14px; }
+    .countdown-wrap { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: center; }
+    .countdown-panel {
+      padding: clamp(24px, 4vw, 42px); border: 1px solid #3b2429; border-radius: 12px;
+      background: linear-gradient(135deg, rgba(230,36,41,.14), rgba(20,17,22,.94) 65%), var(--panel);
+      position: relative; overflow: hidden;
+    }
+    .countdown-panel::after { content: "A"; position: absolute; right: -8px; bottom: -75px; font: 900 18rem/.8 var(--display); color: rgba(255,255,255,.035); pointer-events: none; }
+    .countdown-panel h3 { font: 800 2rem/1 var(--display); text-transform: uppercase; margin-bottom: 8px; }
+    .release-date { color: var(--muted); font-size: .88rem; }
+    .timer { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 25px; position: relative; z-index: 1; }
+    .time-unit { padding: 14px 6px; background: rgba(0,0,0,.3); border: 1px solid rgba(255,255,255,.08); border-radius: 6px; text-align: center; }
+    .time-unit strong { display: block; font: 800 clamp(1.8rem, 4vw, 2.7rem)/1 var(--display); }
+    .time-unit span { display: block; margin-top: 8px; font-size: .63rem; letter-spacing: .13em; color: #c5bec7; text-transform: uppercase; }
+    .countdown-note { color: var(--muted); font-size: .83rem; margin: 18px 0 0; }
+    .side-facts { display: grid; gap: 12px; }
+    .fact { display: flex; gap: 15px; padding: 18px; border: 1px solid var(--line); border-radius: 8px; background: rgba(18,18,23,.72); }
+    .fact-icon { flex: 0 0 42px; height: 42px; display: grid; place-items: center; background: rgba(230,36,41,.14); color: #ff686d; border-radius: 7px; font-size: 1.2rem; }
+    .fact h3 { font-size: .98rem; margin: 0 0 4px; }
+    .fact p { color: var(--muted); font-size: .84rem; margin: 0; }
+    .timeline { position: relative; display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+    .timeline::before { content: ""; position: absolute; left: 4%; right: 4%; top: 19px; height: 2px; background: linear-gradient(90deg, var(--red), #66262a, #3a343d); }
+    .era-card { position: relative; padding-top: 45px; }
+    .era-dot { position: absolute; top: 10px; left: 17px; z-index: 1; width: 19px; height: 19px; border: 4px solid #0b0b0f; border-radius: 50%; background: var(--red); box-shadow: 0 0 0 2px var(--red); }
+    .era-inner { height: 100%; padding: 18px; border: 1px solid var(--line); border-radius: 8px; background: var(--panel); }
+    .era-year { color: #ff7478; font: 800 1.7rem/1 var(--display); }
+    .era-inner h3 { font-size: .97rem; margin: 9px 0 8px; }
+    .era-inner p { color: var(--muted); font-size: .8rem; margin: 0; }
+    .watch-section { background: linear-gradient(180deg, transparent, rgba(255,255,255,.02), transparent); border-block: 1px solid rgba(255,255,255,.05); }
+    .watch-tools { display: flex; justify-content: space-between; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 22px; }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .filter { padding: 9px 13px; border: 1px solid var(--line); border-radius: 5px; background: var(--panel); color: #d5d1d9; font-size: .8rem; font-weight: 700; }
+    .filter.active, .filter:hover { background: var(--red); border-color: var(--red); color: white; }
+    .progress-area { min-width: 220px; flex: 1; max-width: 340px; }
+    .progress-label { display: flex; justify-content: space-between; color: var(--muted); font-size: .76rem; margin-bottom: 8px; }
+    .progress-track { height: 7px; background: #2a272e; border-radius: 20px; overflow: hidden; }
+    .progress-fill { width: 0; height: 100%; background: linear-gradient(90deg, var(--red), #ff777b); transition: width .25s; }
+    .movie-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+    .movie-card { overflow: hidden; border: 1px solid var(--line); border-radius: 9px; background: var(--panel); transition: transform .2s, border-color .2s; }
+    .movie-card:hover { transform: translateY(-4px); border-color: #754044; }
+    .movie-card[hidden] { display: none; }
+    .poster { position: relative; min-height: 190px; display: flex; align-items: end; padding: 14px; overflow: hidden; background: var(--poster-bg, linear-gradient(135deg,#431216,#101016 75%)); }
+    .poster::before { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(5,5,8,.96), rgba(5,5,8,.03) 85%); }
+    .poster img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .7; transition: transform .4s; }
+    .movie-card:hover .poster img { transform: scale(1.05); }
+    .poster-title { position: relative; z-index: 1; font: 800 1.55rem/.98 var(--display); text-transform: uppercase; text-shadow: 0 2px 10px #000; }
+    .poster-year { position: absolute; top: 12px; right: 12px; z-index: 2; padding: 4px 7px; border-radius: 3px; background: rgba(0,0,0,.65); font-size: .7rem; font-weight: 800; }
+    .movie-info { padding: 14px; }
+    .movie-info h3 { font-size: .91rem; line-height: 1.35; margin: 0 0 8px; }
+    .movie-info p { color: var(--muted); font-size: .78rem; min-height: 42px; margin-bottom: 13px; }
+    .movie-meta { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .badge { color: #ff888b; font-size: .65rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 800; }
+    .watched { display: flex; align-items: center; gap: 6px; color: #d4d0d8; font-size: .72rem; cursor: pointer; }
+    .watched input { accent-color: var(--red); width: 16px; height: 16px; }
+    .doom-feature { display: grid; grid-template-columns: .9fr 1.1fr; gap: 30px; align-items: center; }
+    .doom-art { min-height: 390px; position: relative; overflow: hidden; border-radius: 12px; border: 1px solid #4b292d; background:
+      linear-gradient(0deg, rgba(8,8,12,.85), rgba(8,8,12,.05)),
+      radial-gradient(ellipse at 50% 30%, #a12b30 0%, #35171e 30%, #101016 72%);
+      display: grid; place-items: center;
+    }
+    .doom-symbol { font: 900 clamp(8rem, 20vw, 14rem)/1 var(--display); color: rgba(255,255,255,.12); text-shadow: 0 0 55px rgba(230,36,41,.28); }
+    .doom-caption { position: absolute; bottom: 22px; left: 22px; right: 22px; font: 800 2rem/1 var(--display); text-transform: uppercase; }
+    .doom-copy h2 { font: 900 clamp(2.5rem, 5vw, 4.2rem)/.9 var(--display); text-transform: uppercase; margin: 12px 0 20px; }
+    .doom-copy h2 span { color: var(--red); }
+    .doom-copy p { color: #c1bbc5; font-size: .94rem; }
+    .callout { padding: 15px 17px; border-left: 3px solid var(--red); background: rgba(230,36,41,.08); color: #d8d1da; font-size: .84rem; }
+    .footer { padding: 35px 0 45px; border-top: 1px solid var(--line); color: var(--muted); font-size: .8rem; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer strong { color: white; }
+    .back-top { color: white; }
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity .55s, transform .55s; }
+    .reveal.visible { opacity: 1; transform: none; }
+    :focus-visible { outline: 2px solid #ff7277; outline-offset: 3px; }
+    @media (max-width: 900px) {
+      .hero { min-height: 550px; }
+      .countdown-wrap, .doom-feature { grid-template-columns: 1fr; }
+      .timeline { grid-template-columns: repeat(3, 1fr); }
+      .timeline::before { display: none; }
+      .era-card { padding-top: 0; }
+      .era-dot { display: none; }
+      .movie-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .doom-art { min-height: 300px; }
+    }
+    @media (max-width: 650px) {
+      .container { width: min(100% - 28px, var(--max)); }
+      .nav { min-height: 64px; }
+      .menu-btn { display: inline-block; }
+      .nav-links { display: none; position: absolute; left: 0; right: 0; top: 64px; padding: 18px 22px; background: #101015; border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; }
+      .nav-links.open { display: flex; }
+      .hero { min-height: 560px; background-position: 58% center; }
+      .hero-content { padding-block: 75px 90px; }
+      .section { padding-block: 55px; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 14px; }
+      .timer { gap: 6px; }
+      .time-unit { padding: 12px 4px; }
+      .timeline { grid-template-columns: repeat(2, 1fr); }
+      .movie-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .poster { min-height: 155px; padding: 10px; }
+      .poster-title { font-size: 1.3rem; }
+      .movie-info { padding: 11px; }
+      .movie-info p { min-height: 60px; }
+      .watch-tools { align-items: stretch; }
+      .progress-area { max-width: none; }
+      .doom-art { min-height: 250px; }
+      .footer-inner { display: block; }
+      .footer-inner > * + * { margin-top: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top" aria-label="Road to Doomsday home">
+        <span class="brand-mark">R/D</span>
+        <span>ROAD TO DOOMSDAY<small>THE MCU WATCH GUIDE</small></span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="navLinks">MENU ☰</button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#countdown">Countdown</a><a href="#timeline">Timeline</a><a href="#watchlist">Watchlist</a><a href="#doom">Doctor Doom</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-content">
+        <div class="eyebrow">Your journey starts here · Marvel Cinematic Universe</div>
+        <h1>Road to <span>Doomsday</span></h1>
+        <p class="hero-copy">The universe is bigger than one hero. Follow the key stories, revisit the moments that changed the Avengers, and build your own watchlist before the next major chapter.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#watchlist">▶ BUILD YOUR WATCHLIST</a>
+          <a class="btn btn-secondary" href="#timeline">EXPLORE THE TIMELINE ↓</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="countdown">
+      <div class="container countdown-wrap">
+        <div class="countdown-panel reveal">
+          <div class="eyebrow">The next chapter</div>
+          <h3>Avengers: Doomsday</h3>
+          <div class="release-date">Scheduled release date: December 18, 2026*</div>
+          <div class="timer" role="timer" aria-label="Countdown to Avengers Doomsday">
+            <div class="time-unit"><strong id="days">--</strong><span>Days</span></div>
+            <div class="time-unit"><strong id="hours">--</strong><span>Hours</span></div>
+            <div class="time-unit"><strong id="minutes">--</strong><span>Minutes</span></div>
+            <div class="time-unit"><strong id="seconds">--</strong><span>Seconds</span></div>
+          </div>
+          <p class="countdown-note" id="countdownNote">Every story leaves a mark. Catch up at your own pace.</p>
+        </div>
+        <div class="side-facts reveal">
+          <article class="fact"><div class="fact-icon">✦</div><div><h3>Start with the essentials</h3><p>You do not need to watch every project. Begin with the films that shape the Avengers' story.</p></div></article>
+          <article class="fact"><div class="fact-icon">⌁</div><div><h3>Follow the bigger picture</h3><p>Team conflicts, cosmic threats, and alternate realities help connect the major events.</p></div></article>
+          <article class="fact"><div class="fact-icon">✓</div><div><h3>Make it your own</h3><p>Mark films as watched and your progress will stay saved in this browser.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="timeline">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="red-rule"></div><div class="eyebrow">A connected universe</div><h2>The road so far</h2></div>
+          <p>Move through the major story eras, from the first armored suit to stories that bend time and reality.</p>
+        </div>
+        <div class="timeline">
+          <article class="era-card reveal"><span class="era-dot"></span><div class="era-inner"><div class="era-year">2008–12</div><h3>The Beginning</h3><p>Individual heroes emerge, then unite when Earth faces a new kind of threat.</p></div></article>
+          <article class="era-card reveal"><span class="era-dot"></span><div class="era-inner"><div class="era-year">2014–16</div><h3>Fractures</h3><p>Secrets, difficult choices, and disagreements test the trust between heroes.</p></div></article>
+          <article class="era-card reveal"><span class="era-dot"></span><div class="era-inner"><div class="era-year">2018–19</div><h3>The Infinity Saga</h3><p>The fight for the Infinity Stones changes the universe and its survivors.</p></div></article>
+          <article class="era-card reveal"><span class="era-dot"></span><div class="era-inner"><div class="era-year">2021–22</div><h3>The Multiverse</h3><p>Different timelines and realities make familiar stories much more complicated.</p></div></article>
+          <article class="era-card reveal"><span class="era-dot"></span><div class="era-inner"><div class="era-year">2025+</div><h3>A New Era</h3><p>New teams and unfamiliar worlds open the door to the next major conflict.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section watch-section" id="watchlist">
+      <div class="container">
+        <div class="section-head reveal">
+          <div><div class="red-rule"></div><div class="eyebrow">Your personal mission</div><h2>Essential watchlist</h2></div>
+          <p>Choose the essentials or browse the expanded list. Tick a title when you finish it to track your progress.</p>
+        </div>
+        <div class="watch-tools">
+          <div class="filters" role="group" aria-label="Filter movies">
+            <button class="filter active" data-filter="all" aria-pressed="true">All titles</button>
+            <button class="filter" data-filter="essential" aria-pressed="false">Essential</button>
+            <button class="filter" data-filter="optional" aria-pressed="false">Optional</button>
+          </div>
+          <div class="progress-area">
+            <div class="progress-label"><span>Your progress</span><strong id="progressText">0 / 16 watched</strong></div>
+            <div class="progress-track" role="progressbar" aria-label="Watchlist progress" aria-valuemin="0" aria-valuemax="16" aria-valuenow="0" id="progressBar"><div class="progress-fill" id="progressFill"></div></div>
+          </div>
+        </div>
+        <div class="movie-grid" id="movieGrid">
+          <article class="movie-card reveal" data-kind="essential" data-id="iron-man"><div class="poster" style="--poster-bg:linear-gradient(135deg,#87321d,#15141b)"><img loading="lazy" src="https://image.tmdb.org/t/p/w500/78lPtwv72eTNqFW9COBYI0dWDJa.jpg" alt="" onerror="this.style.display='none'"><span class="poster-year">2008</span><div class="poster-title">Iron Man</div></div><div class="movie-info"><h3>Iron Man</h3><p>The origin of Tony Stark and the beginning of the MCU.</p><div class="movie-meta"><span class="badge">Essential</span><label class="watched"><input type="checkbox" data-watch="iron-man"> Watched</label></div></div></article>
+          <article class="movie-card reveal" data-kind="optional" data-id="hulk"><div class="poster" style="--poster-bg:linear-gradient(135deg,#28533a,#111116)"><span class="poster-year">2008</span><div class="poster-title">The Incredible Hulk</div></div><div class="movie-info"><h3>The Incredible Hulk</h3><p>Meet another hero whose power is difficult to control.</p><div class="movie-meta"><span class="badge">Optional</span><label class="watched"><input type="checkbox" data-watch="hulk"> Watched</label></div></div></article>
+          <article class="movie-card reveal" data-kind="essential" data-id="avengers"><div class="poster" style="--poster-bg:linear-gradient(135deg,#263b62,#15121a)"><img loading="lazy" src="https://image.tmdb.org/t/p/w500/RYMX2wcKCBAr24UyPD7xwmjaTn.jpg" alt="" onerror="this.style.display='none'"><span class="poster-year">2012</span><div class="poster-title">The Avengers</div></div><div class="movie-info"><h3>The Avengers</h3><p>Earth's mightiest heroes learn to fight as a team.</p><div class="movie-meta"><span class="badge">Essential</span><label class="watched"><input type="checkbox" data-watch="avengers"> Watched</label></div></div></article>
+          <article class="movie-card reveal" data-kind="optional" data-id="winter-soldier"><div class="poster" style="--poster-bg:linear-gradient(135deg,#34485b,#15151a)"><span class="poster-year">2014</span><div class="poster-title">The Winter Soldier</div></div><div class="movie-info"><h3>Captain America: The Winter Soldier</h3><p>A conspiracy changes how Steve Rogers sees the world.</p><div class="movie-meta"><span class="badge">Optional</span><label class="watched"><input type="checkbox" data-watch="winter-soldier"> Watched</label></div></div></article>
+          <article class="movie-card reveal" data-kind="essential" data-id="civil-war"><div class="poster" style="--poster-bg:linear-gradient(135deg,#753a37,#11121a)"><span class="poster-year">2016</span><div class="poster-title">Civil War</div></div><div class="movie-info"><h3>Captain America: Civil War</h3><p>A disagreement over accountability divides the team.</p><div class="movie-meta"><span class="badge">Essential</span><label class="watched"><input type="checkbox" data-watch="civil-war"> Watched</label></div></div></article>
+          <article class="movie-card reveal" data-kind="essential" data-id="doctor-strange"><div class="poster" style="--poster-bg:linear-gradient(135deg,#3c2c70,#15121b)"><span class="poster-year">2016</span><div class="poster-title">Doctor Strange</div></div><div class="movie-info"><h3>Doctor Strange</h3><p>Magic introduces a different way to understand reality.</p><div class="movie-meta"><span class="badge">Essential</span><label class="watched"><input type="checkbox" data-watch="doctor-strange"> Watched</label></div></div></article>
+          <article class="movie-card reveal" data-kind="essential" data-id="ragnarok"><div class="poster" style="--poster-bg:linear-gradient(135deg,#7e4c29,#17121a)"><span class="poster-year">2017</span><div class="poster-title">Thor: Ragnarok</div></div><div class="movie-info"><h3>Thor: Ragnarok</h3><p>Thor's journey brings cosmic stakes and new allies.</p><div class="movie-meta"><span class="badge">Essential</span><label class="watched"><input type="checkbox" data-watch="ragnarok"> Watched</label></div></div></article>
+          <article class="movie-card reveal" data-kind="essential" data-id="infinity-war"><div class="poster" style="--poster-bg:linear-gradient(135deg,#4c265d,#111119)"><img loading="lazy" src="https://image.tmdb.org/t/p/w500/7WsyChQLEftFiDOVTGkv3hFpyyt.jpg" alt="" onerror="this.style.display='none'"><span class="poster-year">2018</span><div class="poster-title">Infinity War</div></div><div class="movie-info"><h3>Avengers: Infinity War</h3><p>Thanos pursues the Infinity Stones in a universe-wide conflict.</p><div class="movie-meta"><span class="badge">Essential</span><label class="watched"><input type="checkbox" data-watch="infinity-war"> Watched</label></div></div></article>
+          <article class="movie-card reveal" data-kind="essential" data-id="endgame"><div class="poster" style="--poster-bg:linear-gradient(135deg,#6c4c3c,#12131a)"><img loading="lazy" src="https://image.tmdb.org/t/p/w500/or06FN3Dka5tukK1e9sl16pB3iy.jpg" alt="" onerror="this.style.display='none'"><span class="poster-year">2019</span><div class="poster-title">Endgame</div></div><div class="movie-info"><h3>Avengers: Endgame</h3><p>The surviving heroes face the consequences of the battle.</p><div class="movie-meta"><span class="badge">Essential</span><label class="watched"><input type="checkbox" data-watch="endgame"> Watched</label></div></div></article>
+          <article class="movie-card reveal" data-kind="essential" data-id="loki"><div class="poster" style="--poster-bg:linear-gradient(135deg,#5c7134,#12121a)"><span class="poster-year">Series</span><div class="poster-title">Loki</div></div><div class="movie-info"><h3>Loki — Seasons 1 &amp; 2</h3><p>Explore timelines, branching choices, and multiverse rules.</p><div class="movie-meta"><span class="badge">Essential</span><label class="watched"><input type="checkbox" data-watch="loki"> Watched</label></div></div></article>
+          <article class="movie-card reveal" data-kind="essential" data-id="no-way-home"><div class="poster" style="--poster-bg:linear-gradient(135deg,#813c2e,#12131b)"><span class="poster-year">2021</span><div class="poster-title">No Way Home</div></div><div class="movie-info"><h3>Spider-Man: No Way Home</h3><p>A choice connects different versions of familiar characters.</p><div class="movie-meta"><span class="badge">Essential</span><label class="watched"><input type="checkbox" data-watch="no-way-home"> Watched</label></div></div></article>
+          <article class="movie-card reveal" data-kind="essential" data-id="multiverse"><div class="poster" style="--poster-bg:linear-gradient(135deg,#4c286d,#111119)"><span class="poster-year">2022</span><div class="poster-title">Multiverse of Madness</div></div><div class="movie-info"><h3>Doctor Strange in the Multiverse of Madness</h3><p>Travel between realities comes with serious consequences.</p><div class="movie-meta"><span class="badge">Essential</span><label class="watched"><input type="checkbox" data-watch="multiverse"> Watched</label></div></div></article>
+          <article class="movie-card reveal" data-kind="optional" data-id="wakanda"><div class="poster" style="--poster-bg:linear-gradient(135deg,#294e65,#111119)"><span class="poster-year">2022</span><div class="poster-title">Wakanda Forever</div></div><div class="movie-info"><h3>Black Panther: Wakanda Forever</h3><p>Wakanda faces loss, responsibility, and an uncertain future.</p><div class="movie-meta"><span class="badge">Optional</span><label class="watched"><input type="checkbox" data-watch="wakanda"> Watched</label></div></div></article>
+          <article class="movie-card reveal" data-kind="optional" data-id="quantumania"><div class="poster" style="--poster-bg:linear-gradient(135deg,#563e84,#101117)"><span class="poster-year">2023</span><div class="poster-title">Quantumania</div></div><div class="movie-info"><h3>Ant-Man and the Wasp: Quantumania</h3><p>A trip into the Quantum Realm introduces a new danger.</p><div class="movie-meta"><span class="badge">Optional</span><label class="watched"><input type="checkbox" data-watch="quantumania"> Watched</label></div></div></article>
+          <article class="movie-card reveal" data-kind="essential" data-id="fantastic-four"><div class="poster" style="--poster-bg:linear-gradient(135deg,#255c82,#12121a)"><span class="poster-year">2025</span><div class="poster-title">The Fantastic Four</div></div><div class="movie-info"><h3>The Fantastic Four: First Steps</h3><p>Meet a family of heroes from a distinct corner of Marvel's universe.</p><div class="movie-meta"><span class="badge">Essential</span><label class="watched"><input type="checkbox" data-watch="fantastic-four"> Watched</label></div></div></article>
+          <article class="movie-card reveal" data-kind="essential" data-id="thunderbolts"><div class="poster" style="--poster-bg:linear-gradient(135deg,#5c3035,#101117)"><span class="poster-year">2025</span><div class="poster-title">Thunderbolts*</div></div><div class="movie-info"><h3>Thunderbolts*</h3><p>A team of complicated characters is pulled into a dangerous mission.</p><div class="movie-meta"><span class="badge">Essential</span><label class="watched"><input type="checkbox" data-watch="thunderbolts"> Watched</label></div></div></article>
+        </div>
+        <p class="countdown-note">Your checklist is saved locally in this browser. Clearing browser storage may reset it.</p>
+      </div>
+    </section>
+
+    <section class="section" id="doom">
+      <div class="container doom-feature">
+        <div class="doom-art reveal" role="img" aria-label="A dramatic red and black abstract background representing Doctor Doom">
+          <div class="doom-symbol">D</div><div class="doom-caption">A new threat rises</div>
+        </div>
+        <div class="doom-copy reveal">
+          <div class="eyebrow">Beyond the Avengers</div>
+          <h2>Who is <span>Doctor Doom?</span></h2>
+          <p>Victor von Doom is one of Marvel's most recognizable villains in the comics: a brilliant inventor, a powerful ruler, and a master of both science and sorcery. His ambition and intelligence make him a threat who cannot be understood through strength alone.</p>
+          <p>As the MCU moves into stories involving new teams and different realities, learning about Doctor Doom's place in Marvel lore can add context to the road ahead. The details of his role in the film should be confirmed through official announcements rather than rumors.</p>
+          <div class="callout">This page is a fan-made viewing guide. It is not affiliated with or endorsed by Marvel or Disney.</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div><strong>ROAD TO DOOMSDAY</strong><br>A fan-made MCU watch guide, built for movie fans.</div>
+      <div>Release dates and film details can change. Check <a href="https://www.marvel.com/movies" target="_blank" rel="noopener noreferrer">Marvel's official movie page</a> for updates.</div>
+      <a class="back-top" href="#top">Back to top ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      "use strict";
+      const RELEASE_DATE = new Date("2026-12-18T00:00:00");
+      const countdownIds = ["days", "hours", "minutes", "seconds"];
+      function updateCountdown() {
+        const now = new Date();
+        let diff = Math.max(0, RELEASE_DATE.getTime() - now.getTime());
+        const values = [
+          Math.floor(diff / 86400000),
+          Math.floor((diff % 86400000) / 3600000),
+          Math.floor((diff % 3600000) / 60000),
+          Math.floor((diff % 60000) / 1000)
+        ];
+        countdownIds.forEach((id, i) => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = String(values[i]).padStart(2, "0");
+        });
+        if (diff === 0) document.getElementById("countdownNote").textContent = "The scheduled release date has arrived. Check official sources for current release information.";
+      }
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      const STORAGE_KEY = "road-to-doomsday-watched-v2";
+      const boxes = [...document.querySelectorAll("[data-watch]")];
+      const cards = [...document.querySelectorAll(".movie-card")];
+      let watched = {};
+      try { watched = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}"); } catch (_) { watched = {}; }
+
+      function updateProgress() {
+        const total = boxes.length;
+        const done = boxes.filter(box => box.checked).length;
+        document.getElementById("progressText").textContent = `${done} / ${total} watched`;
+        document.getElementById("progressFill").style.width = `${total ? done / total * 100 : 0}%`;
+        document.getElementById("progressBar").setAttribute("aria-valuenow", String(done));
+        try {
+          watched = {};
+          boxes.forEach(box => { if (box.checked) watched[box.dataset.watch] = true; });
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(watched));
+        } catch (_) { /* Storage may be disabled; checklist still works for this session. */ }
+      }
+      boxes.forEach(box => {
+        box.checked = Boolean(watched[box.dataset.watch]);
+        box.addEventListener("change", updateProgress);
+      });
+      updateProgress();
+
+      const filters = [...document.querySelectorAll("[data-filter]")];
+      filters.forEach(button => button.addEventListener("click", () => {
+        const filter = button.dataset.filter;
+        filters.forEach(b => {
+          const active = b === button;
+          b.classList.toggle("active", active);
+          b.setAttribute("aria-pressed", String(active));
+        });
+        cards.forEach(card => {
+          card.hidden = filter !== "all" && card.dataset.kind !== filter;
+        });
+      }));
+
+      const menuBtn = document.getElementById("menuBtn");
+      const navLinks = document.getElementById("navLinks");
+      menuBtn.addEventListener("click", () => {
+        const open = navLinks.classList.toggle("open");
+        menuBtn.setAttribute("aria-expanded", String(open));
+      });
+      navLinks.querySelectorAll("a").forEach(link => link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+      }));
+
+      const observer = "IntersectionObserver" in window ? new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 }) : null;
+      document.querySelectorAll(".reveal").forEach(el => {
+        if (observer) observer.observe(el);
+        else el.classList.add("visible");
+      });
+    })();
+  </script>
+</body>
+</html>
